@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Collections;
+using System.ComponentModel.Design;
 
 Console.WriteLine("Hello, World!");
 /*
@@ -9,9 +10,9 @@ Soru - 1: Klavyeden girilen
 20 adet pozitif sayının asal ve asal olmayan olarak 
 2 ayrı listeye atın. (ArrayList sınıfını kullanarak yazınız.)
 
-Negatif ve numeric olmayan girişleri engelleyin.
+Negatif ve numeric olmayan girişleri engelleyin. +++
 
-Her bir dizinin elemanlarını büyükten küçüğe olacak şekilde ekrana yazdırın.
+Her bir dizinin elemanlarını büyükten küçüğe olacak şekilde ekrana yazdırın. +++ 
 Her iki dizinin eleman sayısını ve ortalamasını ekrana yazdırın.
  
  */
@@ -76,19 +77,47 @@ try
     primeNumberList.Sort();
     NonPrimeNumberList.Sort();
 
+    decimal allprimeNumbersSum = 0;
+    decimal allNonprimeNumbersSum = 0;
 
     Console.WriteLine("********** PrimeNumbers ******");
-    foreach (var primeNUmber in primeNumberList)
+    foreach (int primeNUmber in primeNumberList)
     {
         Console.WriteLine(primeNUmber);
+        allprimeNumbersSum += primeNUmber;
     }
+
+    Console.WriteLine($"PrimeNumbers Count:{primeNumberList.Count}");
+   
+    if (primeNumberList.Count>0)
+    {
+        Console.WriteLine($"PrimeNumbers Average:{((decimal)(allprimeNumbersSum / primeNumberList.Count)).ToString("0.000")}");
+    }
+    else
+    {
+        Console.WriteLine($"Avarege cannot be calculated for PrimeNumbers since PrimeNumbers count 0 ");
+    }
+  
 
     Console.WriteLine("********** NonPrimeNumbers ******");
-    foreach (var nonPrimeNumber in NonPrimeNumberList)
+    foreach (int nonPrimeNumber in NonPrimeNumberList)
     {
         Console.WriteLine(nonPrimeNumber);
+        allNonprimeNumbersSum += nonPrimeNumber;
     }
 
+    Console.WriteLine($"NonPrimeNumbers Count:{NonPrimeNumberList.Count}");
+
+    if (NonPrimeNumberList.Count>0)
+    {
+        Console.WriteLine($"NonPrimeNumbers Average:{(decimal)(allNonprimeNumbersSum / NonPrimeNumberList.Count)}");
+    }
+    else
+    {
+        Console.WriteLine($"Avarege cannot be calculated for NonPrimeNumbers since  NonPrimeNumbers count 0");
+    }
+
+ 
     Console.ReadLine(); 
 }
 catch (Exception ex)
